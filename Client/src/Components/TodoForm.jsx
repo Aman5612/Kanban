@@ -14,7 +14,7 @@ function TodoForm({ tasks, action }) {
     setSubmit(true);
     try {
       if (action !== "update") {
-        const response = await fetch("http://localhost:3000/tasks", {
+        const response = await fetch("https://kb-server-nfbx.onrender.com/tasks", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -33,11 +33,11 @@ function TodoForm({ tasks, action }) {
       }
       if (action === "update") {
         const taskData = await axios.get(
-          `http://localhost:3000/gettasks/${id}`
+          `https://kb-server-nfbx.onrender.com/gettasks/${id}`
         );
         const data = taskData.data;
         if (data) {
-          const response = await fetch(`http://localhost:3000/tasks/${id}`, {
+          const response = await fetch(`https://kb-server-nfbx.onrender.com/tasks/${id}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
@@ -54,7 +54,7 @@ function TodoForm({ tasks, action }) {
           }
         } else {
           const response = await fetch(
-            `http://localhost:3000/underProcessTask/${id}`,
+            `https://kb-server-nfbx.onrender.com/underProcessTask/${id}`,
             {
               method: "PUT",
               headers: {

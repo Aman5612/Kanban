@@ -10,63 +10,6 @@ function App() {
   const [showOptions, setShowOptions] = useState(false);
   const [doneTasks, setDoneTasks] = useState([]);
 
-  // const todoTasks = [
-  //   {
-  //     priority: "Low",
-  //     title: "Brainstorming",
-  //     description:
-  //       "Brainstorming brings team members' diverse experience into play.",
-  //   },
-  //   {
-  //     priority: "High",
-  //     title: "Research",
-  //     description: "User research helps you to create an optimal solution.",
-  //   },
-  //   {
-  //     priority: "High",
-  //     title: "Wireframes",
-  //     description:
-  //       "Low fidelity wireframes include the basic layout and structure of the interface.",
-  //   },
-  // ];
-
-  // const onProgressTasks = [
-  //   {
-  //     priority: "Low",
-  //     title: "Onboarding Illustrations",
-  //     description: "Illustrations for onboarding screens.",
-  //   },
-  //   {
-  //     priority: "Low",
-  //     title: "Moodboard",
-  //     description: "Moodboards visually convey the feel and tone of a project.",
-  //   },
-  //   {
-  //     priority: "Low",
-  //     title: "Refactoring",
-  //     description:
-  //       "Improving the codebase without changing its external behavior.",
-  //   },
-  // ];
-
-  // const doneTasks = [
-  //   {
-  //     priority: "Completed",
-  //     title: "Mobile App UI Design",
-  //     description: "Designing the user interface for a mobile application.",
-  //   },
-  //   {
-  //     priority: "Completed",
-  //     title: "iOS App Design",
-  //     description: "Designing the user interface for an iOS application.",
-  //   },
-  //   {
-  //     priority: "Completed",
-  //     title: "Design System",
-  //     description: "It just needs to adapt the UI from what you did before.",
-  //   },
-  // ];
-
   const handleFormView = () => {
     setCreate(!create);
   };
@@ -80,11 +23,15 @@ function App() {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/gettasks");
-      const response2 = await axios.get(
-        "http://localhost:3000/underProcessTasks"
+      const response = await axios.get(
+        "https://kb-server-nfbx.onrender.com/gettasks"
       );
-      const response3 = await axios.get("http://localhost:3000/completedTasks");
+      const response2 = await axios.get(
+        "https://kb-server-nfbx.onrender.com/underProcessTasks"
+      );
+      const response3 = await axios.get(
+        "https://kb-server-nfbx.onrender.com/completedTasks"
+      );
       setTasks(response.data);
       setUnderProcessTasks(response2.data);
       setDoneTasks(response3.data);

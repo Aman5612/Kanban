@@ -12,14 +12,14 @@ const Options = ({ _id, type }) => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/tasks/${id}`);
+      await axios.delete(`https://kb-server-nfbx.onrender.com/tasks/${id}`);
     } catch (error) {
       try {
-        await axios.delete(`http://localhost:3000/underProcessTask/${id}`);
+        await axios.delete(`https://kb-server-nfbx.onrender.com/underProcessTask/${id}`);
         window.location.href = "/";
       } catch (error) {
         try {
-          await axios.delete(`http://localhost:3000/completedTask/${id}`);
+          await axios.delete(`https://kb-server-nfbx.onrender.com/completedTask/${id}`);
           window.location.href = "/";
         } catch (error) {
           console.error("Error deleting task:", error);
@@ -34,12 +34,12 @@ const Options = ({ _id, type }) => {
 
   const handleMove = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/gettasks/${id}`);
+      const response = await axios.get(`https://kb-server-nfbx.onrender.com/gettasks/${id}`);
       const data = response.data;
       console.log(data);
       if (data) {
-        await axios.post("http://localhost:3000/underProcessTask", data);
-        await axios.delete(`http://localhost:3000/tasks/${id}`);
+        await axios.post("https://kb-server-nfbx.onrender.com/underProcessTask", data);
+        await axios.delete(`https://kb-server-nfbx.onrender.com/tasks/${id}`);
       }
       window.location.href = "/";
     } catch (error) {
@@ -50,13 +50,13 @@ const Options = ({ _id, type }) => {
   const handleComplete = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/underProcessTask/${id}`
+        `https://kb-server-nfbx.onrender.com/underProcessTask/${id}`
       );
       const data = response.data;
       console.log(data);
       if (data) {
-        await axios.post("http://localhost:3000/completedTask", data);
-        await axios.delete(`http://localhost:3000/underProcessTask/${id}`);
+        await axios.post("https://kb-server-nfbx.onrender.com/completedTask", data);
+        await axios.delete(`https://kb-server-nfbx.onrender.com/underProcessTask/${id}`);
       }
       window.location.href = "/";
     } catch (error) {
